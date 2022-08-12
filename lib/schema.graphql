@@ -1,0 +1,15 @@
+type Course {
+  _id: ID!
+  title: String!
+  description: String
+  topic: String
+  completed_at: String!
+  img: String
+}
+
+type Query {
+  "You can get the courses completed by Camilo Arango"
+  getCourses: [Course]
+  "Returns a single course completed by Camilo Arango"
+  getCourse(id: ID!): Course #ID! Campo obligatorio
+}

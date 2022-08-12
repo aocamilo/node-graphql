@@ -1,0 +1,27 @@
+version: "3.3"
+
+services:
+  mongo:
+    image: mongo:4.4
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=aocamilo
+      - MONGO_INITDB_ROOT_PASSWORD=alejandro
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo_data:/data/db
+
+  node-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mongo
+    volumes:
+      - /app/node_modules
+      - ./node-web:/app
+    ports:
+      - "3000:3000"
+
+volumes:
+  my_data:
