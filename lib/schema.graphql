@@ -13,3 +13,14 @@ type Query {
   "Returns a single course completed by Camilo Arango"
   getCourse(id: ID!): Course #ID! Campo obligatorio
 }
+
+input CourseInput {
+  title: String!
+  description: String!
+  img: String!
+}
+
+type Mutation {
+  "Creates a course certificate registry"
+  createCourse(input: CourseInput!): Course
+}
